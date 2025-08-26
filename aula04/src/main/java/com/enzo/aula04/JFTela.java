@@ -34,6 +34,7 @@ public class JFTela extends javax.swing.JFrame {
         txtAtraso = new javax.swing.JTextField();
         btnCalcular = new javax.swing.JButton();
         lbTotal = new javax.swing.JLabel();
+        btnIf = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,11 +51,8 @@ public class JFTela extends javax.swing.JFrame {
 
         jLabel3.setText("Taxa de juros");
 
-        txtJuros.setText("jTextField2");
-
         jLabel4.setText("Data do atraso");
 
-        txtAtraso.setText("jTextField3");
         txtAtraso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAtrasoActionPerformed(evt);
@@ -69,6 +67,13 @@ public class JFTela extends javax.swing.JFrame {
         });
 
         lbTotal.setText("Total a pagar: R$0,00");
+
+        btnIf.setText("if else");
+        btnIf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIfActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,11 +96,13 @@ public class JFTela extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtAtraso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                            .addComponent(txtJuros, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtAtraso, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtJuros, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
                             .addComponent(txtPagamento, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(18, 18, 18)
-                        .addComponent(btnCalcular)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCalcular)
+                            .addComponent(btnIf))))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(lbTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -117,13 +124,15 @@ public class JFTela extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtJuros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtJuros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnIf))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtAtraso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                .addComponent(lbTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
         );
 
         pack();
@@ -145,11 +154,33 @@ public class JFTela extends javax.swing.JFrame {
         double valor = Double.valueOf(txtPagamento.getText());
         double taxa = Double.valueOf(txtJuros.getText());
         int atraso = Integer.valueOf(txtAtraso.getText());
-        
+
         double juros = taxa * valor * atraso;
         double montante = valor + juros;
-        lbTotal.setText("Total a pagar R$" +montante);
+        lbTotal.setText("Total a pagar: R$"+montante);
     }//GEN-LAST:event_btnCalcularActionPerformed
+
+    private void btnIfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIfActionPerformed
+        // TODO add your handling code here:
+        int a = Integer.valueOf(txtPagamento.getText());
+        int b = Integer.valueOf(txtJuros.getText());
+        int c = Integer.valueOf(txtAtraso.getText());
+        
+        String mensagem = "";
+        if (a>b && a>c){
+            mensagem = "A é o maior valor";
+        }
+        else if (b>a && b>c){
+            mensagem = "B é o maoir valor";
+        }
+        else if (c>a && c>b) {
+            mensagem = "C é o maior valor";
+        }
+        else{
+            mensagem = "Resultado não esperado";
+        }
+        JOptionPane.showMessageDialog(null, mensagem);
+    }//GEN-LAST:event_btnIfActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,6 +221,7 @@ public class JFTela extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcular;
     private javax.swing.JButton btnContar;
+    private javax.swing.JButton btnIf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
